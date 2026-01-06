@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { supabase } from './supabase_client.ts';
 // @ts-ignore
 import { GitHubCalendar } from 'react-github-calendar';
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/shift-away.css";
+import Tippy from "@tippyjs/react";
+
 
 function App() {
 
@@ -105,7 +109,19 @@ function App() {
     return (
       <div>
         <h2>Welcome, {session?.user?.email}</h2>
-        <GitHubCalendar username={session?.user?.user_metadata?.user_name} />
+        <GitHubCalendar
+          username={session?.user?.user_metadata?.user_name}
+          renderBlock={(block, activity) => (
+            <Tippy
+              key={activity.date}
+              content={`${activity.count} aportes el ${activity.date}`}
+              animation="shift-away"
+              placement="top"
+            >
+              {block}
+            </Tippy>
+          )}
+        />
         <img style={{ width: '200px' }} src={session?.user?.user_metadata?.avatar_url} alt="" />
         <button onClick={signOut}>Sign out</button>
       </div>
