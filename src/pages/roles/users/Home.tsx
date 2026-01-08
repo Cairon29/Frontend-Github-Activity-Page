@@ -8,6 +8,7 @@ import { supabase } from '../../../supabase_client';
 import { useNavigate } from 'react-router-dom';
 
 import './home.css';
+import SideMenu from '../../base/side_menu';
 
 export default function Home() {
     const { user, loading, clearAuth } = useAuthStore();
@@ -29,6 +30,7 @@ export default function Home() {
 
     return (
         <>
+            <SideMenu />
             <div className="home_container">
                 <section className="home_section">
                     <h1>An amazing title</h1>

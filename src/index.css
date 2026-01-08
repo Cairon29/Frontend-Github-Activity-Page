@@ -184,3 +184,80 @@ body {
 .social-icon:hover {
   fill: white;
 }
+
+/* Side Menu Styles */
+.menu_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 35;
+  /* Below menu (40) but above page content */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.side_menu {
+  position: fixed;
+  right: 0;
+  top: var(--header-height);
+  bottom: 0;
+  width: 280px;
+  /* Adjust width as needed */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 1px solid var(--glass-border);
+  padding: 2rem;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.menu_container b {
+  display: block;
+  font-size: 2rem;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.menu_container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu_container li {
+  padding: 1rem 0;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.menu_container li:hover {
+  color: var(--text-primary);
+  padding-left: 0.5rem;
+  color: var(--accent-primary);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

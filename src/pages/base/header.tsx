@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useUIStore } from '../../store/ui';
 
 export default function Header() {
     const location = useLocation();
+    const { toggleSideMenu } = useUIStore();
 
     // Simple helper to check active status
     const isActive = (path: string) => location.pathname === path;
@@ -32,6 +34,9 @@ export default function Header() {
                         Login
                     </button>
                 </Link>
+                <button onClick={toggleSideMenu} className="auth-button" style={{ marginLeft: '10px' }}>
+                    Menu
+                </button>
             </div>
         </header>
     );
