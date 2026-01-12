@@ -17,7 +17,7 @@ export default function Home() {
     const handleLogout = async () => {
         await supabase.auth.signOut();
         clearAuth();
-        navigate('/login');
+        navigate('/landing');
     }
 
     if (loading) {
