@@ -1,26 +1,218 @@
+:root {
+    /* Color Theme Swatches in Hex */
+    --1-hex: #125458;
+    --2-hex: #3aac8a;
+    --3-hex: #074E8C;
+    --4-hex: #2995D9;
+    --5-hex: #75fcfc;
+    --6-hex: #29a1a1;
+
+    --7-hex: #fd3689;
+    --8-hex: #fa69a0;
+    --9-hex: #fca4cd;
+
+
+    /* inverted colors */
+    --1-inverted: #fce2bf;
+    --2-inverted: #fb9740;
+    --3-inverted: #f8b173;
+    --4-inverted: #d66a26;
+    --5-inverted: #c20d0d;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.color-1 {
+    color: var(--1-hex);
+}
+
+.color-2 {
+    color: var(--2-hex);
+}
+
+.color-3 {
+    color: var(--3-hex);
+}
+
+.color-4 {
+    color: var(--4-hex);
+}
+
+.color-5 {
+    color: var(--5-hex);
+}
+
+.color-6 {
+    color: var(--6-hex);
+}
+
 .landing_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-rows: repeat(3, auto);
 }
 
+.landing_section {
+    /* border: 1px solid rgb(158, 158, 158); */
+    padding: 20px;
+}
 
 .landing_section:nth-child(1) {
     grid-column: span 3 / span 3;
 }
 
-.landing_section:nth-child(2) {
-    grid-row: span 2 / span 2;
-    grid-row-start: 2;
-}
+
+
+
 
 .landing_section:nth-child(3) {
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2;
     grid-row-start: 2;
+    background-color: #1e1e1e;
+    min-height: 200px;
 }
 
 .landing_container input {
+    /* Default reset */
     color: black;
+}
+
+/* Section 2: Dotted Background & Minimal Input */
+.landing_section:nth-child(2) {
+    grid-row: span 2 / span 2;
+    grid-row-start: 2;
+    /* Dotted Grey Background */
+    background-color: #f9f9f9;
+    background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: none;
+    /* Removed previous shadow */
+}
+
+/* Wrapper that acts as the visual "input" */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    /* Pill shape */
+    padding: 6px 6px 6px 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.search-wrapper:focus-within {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    border-color: var(--6-hex);
+}
+
+.search-wrapper input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 1rem;
+    color: #374151;
+    padding: 8px 0;
+}
+
+.search-wrapper input::placeholder {
+    color: #9ca3af;
+}
+
+.search-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-btn {
+    background-color: var(--1-hex);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: var(--7-hex);
+}
+
+.search-btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    border-radius: 50%;
+}
+
+.clear-btn:hover {
+    color: #ef4444;
+    background-color: #fef2f2;
+}
+
+.title_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+}
+
+
+.title {
+    position: absolute;
+    z-index: 4;
+    /* border: 1px solid rgb(145, 255, 0); */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 3rem;
+    pointer-events: none;
+    /* Let clicks pass through if needed, though buttons are elsewhere */
+}
+
+
+
+#title_container {
+    /* border: 1px solid red; */
+}
+
+#cubes {
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
 }

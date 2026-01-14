@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/session';
 import { supabase } from '../../supabase_client';
 
+// @ts-ignore
+import StaggeredMenu from '../../components/StaggeredMenu';
+
+
 export default function Header() {
     const location = useLocation();
     const { toggleSideMenu } = useUIStore();
@@ -119,36 +123,52 @@ export default function Header() {
     // Simple helper to check active status
     const isActive = (path: string) => location.pathname === path;
 
+    const menuItems = [
+        { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+        { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+        { label: 'Services', ariaLabel: 'View our services', link: '/services' },
+        { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
+    ];
+
+    const socialItems = [
+        { label: 'Twitter', link: 'https://twitter.com' },
+        { label: 'GitHub', link: 'https://github.com' },
+        { label: 'LinkedIn', link: 'https://linkedin.com' }
+    ];
+
     return (
-        <header id="header">
-            <div className="logo-container">
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <span className="logo-text">Ur Commit</span>
-                </Link>
-            </div>
+        <>
+            <header id="header">
+                <div className="logo-container">
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <span className="logo-text color-5">Code Habits</span>
+                    </Link>
+                </div>
 
-            <nav>
-                <Link
-                    to="/home"
-                    className="nav-link"
-                    style={{ color: isActive('/home') ? 'var(--text-primary)' : '' }}
-                >
-                    Home
-                </Link>
-                <a href="#" className="nav-link">Features</a>
-                <a href="#" className="nav-link">Community</a>
-            </nav>
+                <nav>
+                    <Link
+                        to="/home"
+                        className="nav-link"
+                        style={{ color: isActive('/home') ? 'var(--text-primary)' : '' }}
+                    >
+                        Home
+                    </Link>
+                    <a href="#" className="nav-link">Features</a>
+                    <a href="#" className="nav-link">Community</a>
+                </nav>
 
-            <div>
-                <Link to="/login">
-                    <button onClick={handleGitHubLogin} className="auth-button">
-                        Login
+                <div>
+                    <Link to="/login">
+                        <button onClick={handleGitHubLogin} className="auth-button">
+                            Login
+                        </button>
+                    </Link>
+                    <button onClick={toggleSideMenu} className="auth-button" style={{ marginLeft: '10px' }}>
+                        Menu
                     </button>
-                </Link>
-                <button onClick={toggleSideMenu} className="auth-button" style={{ marginLeft: '10px' }}>
-                    Menu
-                </button>
-            </div>
-        </header>
+
+                </div>
+            </header>
+        </>
     );
 }

@@ -73,11 +73,45 @@
   --bg-color: #050505;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
-  --accent-primary: #6366f1;
-  --accent-secondary: #a855f7;
   --glass-bg: rgba(18, 18, 18, 0.6);
   --glass-border: rgba(255, 255, 255, 0.08);
   --header-height: 70px;
+
+  --1-hex: #031D40;
+  --2-hex: #0468BF;
+  --3-hex: #074E8C;
+  --4-hex: #2995D9;
+  --5-hex: #75fcfc;
+  --6-hex: #29a1a1;
+}
+
+
+.white {
+  color: #ffffff;
+}
+
+.color-1 {
+  color: var(--1-hex);
+}
+
+.color-2 {
+  color: var(--2-hex);
+}
+
+.color-3 {
+  color: var(--3-hex);
+}
+
+.color-4 {
+  color: var(--4-hex);
+}
+
+.color-5 {
+  color: var(--5-hex);
+}
+
+.color-6 {
+  color: var(--6-hex);
 }
 
 body {
@@ -143,10 +177,6 @@ body {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #fff, var(--text-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   cursor: pointer;
 }
 
@@ -170,7 +200,7 @@ body {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background: var(--accent-primary);
+  background: var(--5-hex);
   transition: width 0.3s ease;
 }
 
@@ -179,7 +209,7 @@ body {
 }
 
 .auth-button {
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(90deg, var(--5-hex), var(--6-hex));
   color: white;
   border: none;
   padding: 0.5rem 1.2rem;
@@ -293,7 +323,7 @@ body {
   display: block;
   font-size: 2rem;
   line-height: 1.1;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--5-hex), var(--6-hex));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
