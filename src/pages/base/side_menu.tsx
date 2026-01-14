@@ -3,12 +3,10 @@ import { useUIStore } from '../../store/ui';
 export default function SideMenu() {
     const { isSideMenuOpen, closeSideMenu } = useUIStore();
 
-    if (!isSideMenuOpen) return null;
-
     return (
         <>
-            <div className="menu_backdrop" onClick={closeSideMenu} />
-            <aside className="side_menu">
+            <div className={`menu_backdrop ${isSideMenuOpen ? 'open' : ''}`} onClick={closeSideMenu} />
+            <aside className={`side_menu ${isSideMenuOpen ? 'open' : ''}`}>
                 <div className="menu_container">
                     {/* Here the big menu title */}
                     <b>Code</b>

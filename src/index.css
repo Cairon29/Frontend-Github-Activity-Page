@@ -83,6 +83,10 @@
   --4-hex: #2995D9;
   --5-hex: #75fcfc;
   --6-hex: #29a1a1;
+  --7-hex: #fd3689;
+  --8-hex: #fa69a0;
+  --9-hex: #fca4cd;
+
 }
 
 
@@ -112,6 +116,18 @@
 
 .color-6 {
   color: var(--6-hex);
+}
+
+.color-7 {
+  color: var(--7-hex);
+}
+
+.color-8 {
+  color: var(--8-hex);
+}
+
+.color-9 {
+  color: var(--9-hex);
 }
 
 body {
@@ -174,6 +190,27 @@ body {
   transition: all 0.3s ease;
 }
 
+.inline-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.medium-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.grey-hover {
+  fill: var(--text-secondary);
+  background-color: var(--glass-border);
+}
+
+.grey-hover:hover {
+  fill: var(--text-primary);
+}
+
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
@@ -209,7 +246,7 @@ body {
 }
 
 .auth-button {
-  background: linear-gradient(90deg, var(--5-hex), var(--6-hex));
+  background-color: transparent;
   color: white;
   border: none;
   padding: 0.5rem 1.2rem;
@@ -217,11 +254,23 @@ body {
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
 }
 
 .auth-button:hover {
   opacity: 0.9;
+  background-color: var(--glass-border);
+  color: var(--7-hex);
+}
+
+.auth-button:active {
+  transform: translateY(2px);
+  background-color: var(--7-hex);
+  color: var(--glass-border);
+
+  & svg {
+    color: white;
+  }
 }
 
 /* Footer Styles */
@@ -294,10 +343,20 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
   z-index: 35;
   /* Below menu (40) but above page content */
-  animation: fadeIn 0.3s ease-out;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
+}
+
+.menu_backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-out, visibility 0s linear 0s;
 }
 
 .side_menu {
@@ -316,7 +375,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  animation: slideInRight 0.3s ease-out;
+
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translateX(20px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s linear 0.3s;
+}
+
+.side_menu.open {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s linear 0s;
 }
 
 .menu_container b {
@@ -349,16 +422,4 @@ body {
   color: var(--text-primary);
   padding-left: 0.5rem;
   color: var(--accent-primary);
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
