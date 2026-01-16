@@ -54,10 +54,6 @@
     grid-template-rows: repeat(3, auto);
 }
 
-.landing_section {
-    /* border: 1px solid rgb(158, 158, 158); */
-    padding: 20px;
-}
 
 .landing_section:nth-child(1) {
     grid-column: span 3 / span 3;
@@ -71,13 +67,63 @@
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2;
     grid-row-start: 2;
-    background-color: #1e1e1e;
-    min-height: 200px;
+    min-height: 600px;
+    background: #47e6d9;
+    /* background: linear-gradient(27deg, rgba(71, 230, 217, 1) 0%, rgb(5, 5, 5) 49%); */
+    background: linear-gradient(27deg, rgba(71, 230, 217, 1) 0%, rgb(12, 12, 12) 49%);
+
 }
 
-.landing_container input {
-    /* Default reset */
-    color: black;
+.slider_article {
+
+    overflow: hidden;
+    position: relative;
+
+    & .slider_container:first-child {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        z-index: 10;
+        max-width: 40%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        & h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--8-hex);
+        }
+
+        & p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .slider_article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slider_article .slider_container:first-child {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: translateY(700%);
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+
+
+.not_so_big {
+    width: 250px;
 }
 
 /* Section 2: Dotted Background & Minimal Input */
@@ -89,13 +135,20 @@
     background-image: radial-gradient(#d1d5db 1px, transparent 1px);
     background-size: 20px 20px;
 
+    color: rgb(12, 12, 12);
+
+
+    gap: 7px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     position: relative;
     box-shadow: none;
     /* Removed previous shadow */
 }
+
+
 
 /* Wrapper that acts as the visual "input" */
 .search-wrapper {
@@ -114,7 +167,11 @@
 
 .search-wrapper:focus-within {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-    border-color: var(--6-hex);
+    border-color: var(--9-hex);
+
+    /* & .search-btn {
+        background-color: #e1cbd8;
+    } */
 }
 
 .search-wrapper input {
@@ -123,7 +180,7 @@
     background: transparent;
     width: 100%;
     font-size: 1rem;
-    color: #374151;
+    color: #513744;
     padding: 8px 0;
 }
 
@@ -138,7 +195,7 @@
 }
 
 .search-btn {
-    background-color: var(--1-hex);
+    background-color: var(--9-hex);
     color: white;
     border: none;
     border-radius: 9999px;
@@ -154,7 +211,7 @@
 }
 
 .search-btn:disabled {
-    background-color: #cbd5e1;
+    background-color: #dfdede;
     cursor: not-allowed;
 }
 
@@ -169,7 +226,7 @@
     align-items: center;
     justify-content: center;
     transition: color 0.2s;
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 .clear-btn:hover {

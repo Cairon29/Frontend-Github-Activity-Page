@@ -10,7 +10,9 @@ import './landing.css';
 import Particles from '../../components/Particles';
 // @ts-ignore
 import RotatingText from '../../components/RotatingText';
-
+// @ts-ignore
+import CardSwap, { Card } from '../../components/CardSwap'
+import githubIcon from '../../assets/free-github-icon-rCdaAPGQJ_SP.svg';
 
 export default function Landing() {
     const [inputUsername, setInputUsername] = useState('');
@@ -60,6 +62,10 @@ export default function Landing() {
                 </div>
             </section>
             <section className="landing_section">
+                <div className='flex flex-row items-center gap-5 p-7'>
+                    <img src={githubIcon} width={60} alt="github icon" />
+                    <span className='text-center not_so_big'> <span className='color-6 font-bold'>Type</span> a user to see their amazing <span className='color-6 font-bold'>calendar</span></span>
+                </div>
                 <div className="search-wrapper">
                     <input
                         type="text"
@@ -74,8 +80,9 @@ export default function Landing() {
                         <button className="search-btn" onClick={searchUser} disabled={!inputUsername}>Search</button>
                     </div>
                 </div>
+
             </section>
-            <section className="landing_section">
+            <section className="landing_section user_search_section">
                 {
                     username ? (
                         <GitHubCalendar
@@ -97,7 +104,39 @@ export default function Landing() {
                             }}
                         />
                     ) : (
-                        <p>Search for a GitHub user to see their activity calendar</p>
+                        <article className='slider_article'>
+                            <div className='slider_container'>
+                                <h3>
+                                    <span className='color-9'>Each day counts, </span>
+                                    <span className='color-5'>each push matters</span>
+                                </h3>
+                                <p>Track your progress and stay motivated with our developer community</p>
+                            </div>
+
+                            <div className='slider_container'>
+                                <div style={{ height: '600px', position: 'relative' }}>
+                                    <CardSwap
+                                        cardDistance={60}
+                                        verticalDistance={70}
+                                        delay={2500}
+                                        pauseOnHover={false}
+                                    >
+                                        <Card>
+                                            <h3>Card 1</h3>
+                                            <p>Your content here</p>
+                                        </Card>
+                                        <Card>
+                                            <h3>Card 2</h3>
+                                            <p>Your content here</p>
+                                        </Card>
+                                        <Card>
+                                            <h3>Card 3</h3>
+                                            <p>Your content here</p>
+                                        </Card>
+                                    </CardSwap>
+                                </div>
+                            </div>
+                        </article>
                     )}
             </section>
         </div>
