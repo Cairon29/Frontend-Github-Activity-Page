@@ -2,7 +2,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 import Tippy from '@tippyjs/react';
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
-import { useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { motion } from 'motion/react';
 import './landing.css';
 
@@ -12,18 +12,31 @@ import Particles from '../../components/Particles';
 import RotatingText from '../../components/RotatingText';
 // @ts-ignore
 import CardSwap, { Card } from '../../components/CardSwap'
-import githubIcon from '../../assets/free-github-icon-rCdaAPGQJ_SP.svg';
+import githubIcon_1 from '../../assets/free-github-icon-rCdaAPGQJ_SP.svg';
+import githubIcon_2 from '../../assets/free-github-icon-qeC3XYNouIkk.svg';
+
 
 export default function Landing() {
     const [inputUsername, setInputUsername] = useState('');
     const [username, setUsername] = useState('');
+    const [userData, setUserData] = useState<any>(null);
     const [loading, setLoading] = useState(false);
 
     const searchUser = () => {
         setLoading(true);
         setUsername(inputUsername);
         setTimeout(() => setLoading(false), 500);
+
+        fetch(`http://localhost:5555/api/users/githubInfo/${inputUsername}`)
+            .then(response => response.json())
+            .then(data => setUserData(data));
     }
+
+    useEffect(() => {
+        console.log(userData);
+    }, [userData]);
+
+
 
     return (
         <div className="landing_container">
@@ -63,7 +76,7 @@ export default function Landing() {
             </section>
             <section className="landing_section">
                 <div className='flex flex-row items-center gap-5 p-7'>
-                    <img src={githubIcon} width={60} alt="github icon" />
+                    <img src={githubIcon_1} width={60} alt="github icon" />
                     <span className='text-center not_so_big'> <span className='color-6 font-bold'>Type</span> a user to see their amazing <span className='color-6 font-bold'>calendar</span></span>
                 </div>
                 <div className="search-wrapper">
@@ -82,27 +95,46 @@ export default function Landing() {
                 </div>
 
             </section>
-            <section className="landing_section user_search_section">
+            <section className={`landing_section ${username ? 'structure_flex' : 'structure_grid'}`}>
                 {
                     username ? (
-                        <GitHubCalendar
-                            username={username}
-                            renderBlock={(block: ReactElement, activity: any) => (
-                                <Tippy
-                                    key={activity.date}
-                                    content={`${activity.count} aportes el ${activity.date}`}
-                                    animation="shift-away"
-                                    placement="top"
-                                >
-                                    {block}
-                                </Tippy>
-                            )}
-                            colorScheme='dark'
-                            theme={{
-                                light: ['hsl(0, 0%, 92%)', 'firebrick'],
-                                dark: ['#333', 'rgb(214, 16, 174)'],
-                            }}
-                        />
+
+                        <article className='user_github_info_container'>
+                            <div className='user_data_container user_info_container'>
+                                <img src={userData?.avatar_url || githubIcon_2} width={100} alt="github icon" />
+                                <span>{username}</span>
+                            </div>
+                            <div className='user_data_container calendar_container'>
+
+                                <GitHubCalendar
+                                    username={username}
+                                    renderBlock={(block: ReactElement, activity: any) => (
+                                        <Tippy
+                                            key={activity.date}
+                                            content={`${activity.count} aportes el ${activity.date}`}
+                                            animation="shift-away"
+                                            placement="top"
+                                        >
+                                            {block}
+                                        </Tippy>
+                                    )}
+                                    colorScheme='dark'
+                                    theme={{
+                                        light: ['hsl(0, 0%, 92%)', 'firebrick'],
+                                        dark: ['#333', 'rgb(214, 16, 174)'],
+                                    }}
+                                />
+                            </div>
+                            <div className='user_data_container github_stats_container'>
+                                <span className='data_label'>Total contributions</span>
+                                <span className='data_label'>Streak</span>
+                                <span className='data_label'>Best day</span>
+                                <span className='data_label'>Most active repositories</span>
+                                <span className='data_label'>Most active languages</span>
+                                <span className='data_label'>Streak</span>
+                                <span className='data_label'>Best day</span>
+                            </div>
+                        </article>
                     ) : (
                         <article className='slider_article'>
                             <div className='slider_container'>

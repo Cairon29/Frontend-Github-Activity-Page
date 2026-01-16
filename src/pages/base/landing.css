@@ -63,14 +63,28 @@
 
 
 
-.landing_section:nth-child(3) {
+.structure_grid {
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2;
     grid-row-start: 2;
     min-height: 600px;
     background: #47e6d9;
-    /* background: linear-gradient(27deg, rgba(71, 230, 217, 1) 0%, rgb(5, 5, 5) 49%); */
     background: linear-gradient(27deg, rgba(71, 230, 217, 1) 0%, rgb(12, 12, 12) 49%);
+
+}
+
+.structure_flex {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    min-height: 600px;
+    background: #47e6d9;
+    background: linear-gradient(0deg, rgba(71, 230, 217, 0.486) 0%, rgb(12, 12, 12) 39%);
 
 }
 
@@ -260,16 +274,65 @@
     /* Let clicks pass through if needed, though buttons are elsewhere */
 }
 
-
-
-#title_container {
-    /* border: 1px solid red; */
+.user_github_info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
-#cubes {
-    border: 1px solid green;
+.user_data_container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.calendar_container {
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -1;
+}
+
+.user_info_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    & img {
+        background-color: #9ca3af;
+    }
+}
+
+
+.github_stats_container {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 85%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.data_label {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.data_label:hover {
+    background: rgba(255, 255, 255, 0.075);
+    transform: translateY(-2px);
 }
