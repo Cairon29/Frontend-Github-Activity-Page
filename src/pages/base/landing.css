@@ -295,14 +295,73 @@
 .user_info_container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 50px;
+    min-height: 100px;
+
+
+    /* border: 1px solid #1664d9; */
 
     & img {
         background-color: #9ca3af;
+        border-radius: 50%;
+    }
+
+    & div {
+        /* border: 1px solid #d1d5db; */
+        min-height: 110px;
     }
 }
 
+.user_profile_name_picture {
+    position: relative;
+}
+
+
+/* TODO BECAUSE WHEN EXITING THE BOX IT DISAPPEARS AGAIN */
+.user_profile_name_picture:hover {
+    & a {
+        display: block;
+    }
+}
+
+.web_link_svg_wrapper {
+    display: none;
+    top: -20%;
+    right: -13%;
+    position: absolute;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: #acacac27;
+    transition: .2s ease-out;
+}
+
+.web_link_svg_wrapper:hover {
+    background-color: #acacac3e;
+}
+
+.user_data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.social-icon-container {
+    width: 70px;
+    box-sizing: content-box;
+    /* border: solid 1px red; */
+    background: #fa6ba71b;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+}
 
 .github_stats_container {
     /* border: 1px solid green; */
@@ -322,7 +381,7 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
     padding: 8px 20px;
     border-radius: 12px;
     color: white;
@@ -335,4 +394,9 @@
 .data_label:hover {
     background: rgba(255, 255, 255, 0.075);
     transform: translateY(-2px);
+}
+
+.divisor_line {
+    height: 110px;
+    border: 1px solid rgba(255, 255, 255, 0.336);
 }

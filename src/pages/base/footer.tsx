@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} Ur Commit. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Code Habits. All rights reserved.</p>
             </div>
         </footer>
     );
