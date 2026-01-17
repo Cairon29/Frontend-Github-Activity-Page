@@ -42,24 +42,36 @@ export default function Landing() {
         <div className="landing_container">
             <section className="landing_section">
                 <div className='title_container' id='title_container'>
-                    <motion.div className="title" layout transition={{ type: "spring", damping: 30, stiffness: 400 }}>
-                        <motion.span layout className="mr-5 white">Track your</motion.span>
-                        <RotatingText
-                            texts={['habits', 'code', 'progress', 'calendar']}
-                            mainClassName="color-5"
-                            staggerFrom={"last"}
-                            initial={{ y: "100%" }}
-                            animate={{ y: 0 }}
-                            exit={{ y: "-120%" }}
-                            staggerDuration={0.025}
-                            splitLevelClassName="overflow-hidden"
-                            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                            rotationInterval={3000}
-                            animatePresenceMode="popLayout"
-                        />
-                    </motion.div>
+                    <div className="flex-column-center title">
 
-                    <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+                        <div className='flex flex-row items-center gap-5 p-4'>
+                            <motion.span layout className="mr-5 white">Track your</motion.span>
+                            <RotatingText
+                                texts={['habits', 'code', 'progress', 'calendar']}
+                                mainClassName="color-5"
+                                staggerFrom={"last"}
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-120%" }}
+                                staggerDuration={0.025}
+                                splitLevelClassName="overflow-hidden"
+                                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                rotationInterval={3000}
+                                animatePresenceMode="popLayout"
+                            />
+
+                        </div>
+                        <div className='title-description'>
+                            Genererate a coding habit based on the proven habit change system from the NYT best-seller, Atomic Habits.
+                        </div>
+                        <div className='flex flex-row items-center gap-5'>
+                            <button id='sign-up-button-title' className='cursor-pointer'>Get Started</button>
+                            <button id='about-button-title' className='cursor-pointer'>About</button>
+                        </div>
+                    </div>
+
+
+                    <div style={{ width: '100%', height: '800px', position: 'relative' }}>
                         <Particles
                             particleColors={['#ffffff', '#29a1a1']}
                             particleCount={250}
@@ -72,6 +84,31 @@ export default function Landing() {
 
                         />
                     </div>
+                </div>
+            </section>
+            <section className='landing_section'>
+                <div>
+
+                    {/* <div className="gallery_grid">
+                        <div className="gallery_item">
+                            <img src="https://assets.codepen.io/85648/pearl-drums-06.jpg" alt="" />
+                            <div className="caption">
+                                <h3>Reference Pure</h3>
+                                <svg viewBox="0 0 448 512" width="100">
+                                    <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="gallery_item">
+                            <img src="https://assets.codepen.io/85648/pearl-drums-05.jpg" alt="" />
+                            <div className="caption">
+                                <h3>Music City Custom</h3>
+                                <svg viewBox="0 0 448 512" width="100">
+                                    <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div> */}
                 </div>
             </section>
             <section className="landing_section">
